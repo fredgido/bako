@@ -7,9 +7,11 @@
 </head>
 
 <body>
-    <div>
-<img src="{{posts}}"/></div>
-    </div>
+<div>
+{% for img in posts %}
+<img src="{{img}}"/>
+{% endfor %}
+</div>
 </body>
 
 </html>
