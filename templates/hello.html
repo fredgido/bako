@@ -1,17 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<head>
-    <title>bako</title>
-
-</head>
-
-<body>
-<div>
-{% for img in posts %}
-<img src="{{img}}"/>
-{% endfor %}
-</div>
-</body>
-
-</html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock  %}
+{% block title %}bako{% endblock %}
+{% block content %}
+    {% for img in posts %}
+    <div>
+        <h3>image # {{ loop.index }}</h3>
+        <img src="{{ img }}" />
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
