@@ -4,6 +4,24 @@ body {
   background-color: #e2bcf4;
 }
 
+header {
+  height: 72px;
+  width: 100%;
+  position: relative;
+  background-color: #b379ec;
+}
+
+header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: orange;
+}
+
 img {
   max-height: 350px;
   max-width: 350px;
