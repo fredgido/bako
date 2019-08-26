@@ -18,7 +18,7 @@ def working_directory(path):
 
 
 with working_directory('./static/pixiv'):
-    posts = glob.glob('*.png')
+    posts = glob.glob('*.png') + glob.glob('*.jpg')
     # for jsonfile in glob.glob('*.json'):
     #     with open(jsonfile) as f:
     #         data = json.load(f)
