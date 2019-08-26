@@ -5,8 +5,8 @@
 {% block title %}bako{% endblock %}
 {% block content %}
     {% for img in posts %}
-    <div class="image">
-        <img src="{{ url_for('static', filename='pixiv/' + img) }}" />
-    </div>
+    <!-- <div class="image"> -->
+        <img class="grid-item" src="{{ url_for('static', filename='pixiv/' + img) }}" />
+    <!-- </div> -->
     {% endfor %}
 {% endblock %}

@@ -17,12 +17,9 @@ def working_directory(path):
     os.chdir(prev_cwd)
 
 
+# Get files
 with working_directory('./static/pixiv'):
     posts = glob.glob('*.png') + glob.glob('*.jpg')
-    # for jsonfile in glob.glob('*.json'):
-    #     with open(jsonfile) as f:
-    #         data = json.load(f)
-    #         posts.append(data['body']['urls']['original'])
 
 
 @app.route('/')
