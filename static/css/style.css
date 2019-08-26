@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  background-color: #e2bcf4;
+}
+
+.content {
+  display: flex;
+}
+
+.image {
+  display: flex;
+  flex-flow: row;
+}
+
+img {
+  max-height: 350px;
+  max-width: 350px;
+}

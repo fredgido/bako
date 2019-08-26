@@ -5,10 +5,8 @@
 {% block title %}bako{% endblock %}
 {% block content %}
     {% for img in posts %}
-    <div>
-        <h3>image # {{ loop.index }}</h3>
-        <img src="{{ img }}" />
+    <div class="image">
+        <img src="{{ url_for('static', filename='pixiv/' + img) }}" />
     </div>
     {% endfor %}
-    </div>
 {% endblock %}
