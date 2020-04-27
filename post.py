@@ -1,4 +1,4 @@
-class Posts():
+class Post():
     def __init__(self):
         self.post_id = 0
         self.post_hash = ''
