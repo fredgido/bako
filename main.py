@@ -3,8 +3,9 @@ import glob
 import json
 import os
 import sys
+import get
 
-from flask import Flask, render_template
+from flask import *
 
 app = Flask(__name__)
 
@@ -25,6 +26,27 @@ with working_directory('./static/pixiv'):
 @app.route('/')
 def hello_world():
     return render_template("hello.html", posts=posts)
+
+@app.route('/download_pixiv', methods=['GET'])
+def presentpixiv():
+    return """<!DOCTYPE html>
+<html>
+<body>
+<form action="/download_pixiv" method="post" >
+  <label for="fname">pixiv id:</label><br>
+  <input type="text" id="pixiv_id" name="pixiv_id" value="20"><br>
+  <input type="submit" value="Submit">
+</form> 
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/download_pixiv".</p>
+</body>
+</html>"""
+
+@app.route('/download_pixiv', methods=['POST'])
+def downloadpixiv():
+    id = request.form.get('pixiv_id')
+    get.download(id);
+    return "done"
+
 
 
 if __name__ == "__main__":
