@@ -61,6 +61,7 @@ def presentpixiv():
 def downloadpixiv():
     id = request.form.get('pixiv_id')
     get.download(id);
+    db.addpixiv(id)
     return "done"
 
 
