@@ -3,7 +3,11 @@ import glob
 import json
 import os
 import sys
+
+from sqlalchemy.orm import scoped_session
+
 import get
+import db
 
 from flask import *
 
@@ -19,13 +23,25 @@ def working_directory(path):
 
 
 # Get files
-with working_directory('./static/pixiv'):
-    posts = glob.glob('*.png') + glob.glob('*.jpg')
+#with working_directory('./static/pixiv'):
+#    posts = glob.glob('*.png') + glob.glob('*.jpg')
+dbsession = scoped_session(db.Session())
+if db.isempty():
+    print("downloading")
+    get.main()
+    with working_directory('./static/pixiv'):
+        ids = glob.glob('*.json')
+    print(str(ids))
+    ids = map(lambda x : x.split('.')[0], ids)
+    for id in ids:
+        db.addpixiv(id)
+print(db.session.query(db.Posts).all())
+#posts = map(addition, numbers)
 
 
 @app.route('/')
 def hello_world():
-    return render_template("hello.html", posts=posts)
+    return render_template("hello.html", posts=map(lambda x : x.file_name,db.session.query(db.Posts).all()))
 
 @app.route('/download_pixiv', methods=['GET'])
 def presentpixiv():
